@@ -1,0 +1,26 @@
+{
+  "name": "shahedstore-backend",
+  "version": "1.0.0",
+  "description": "Shahed Store self-hosted backend (Express + MySQL) for Hostinger Node.js hosting",
+  "type": "module",
+  "main": "server.js",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.js",
+    "import": "node scripts/import-csv.js",
+    "test": "node --test test/rules.test.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "csv-parse": "^5.5.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.4.1",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "mysql2": "^3.11.5",
+    "nodemailer": "^6.9.16"
+  }
+}

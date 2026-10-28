@@ -1,0 +1,5935 @@
+{
+ "abandoned_checkouts": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "session_token": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "customer_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "customer_email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "customer_phone": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "cart_items": {
+    "type": "jsonb",
+    "nullable": false,
+    "default": "[]"
+   },
+   "item_count": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "subtotal": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "discount_amount": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "total": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "coupon_code": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "payment_method": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "notes": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "page_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "user_agent": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "converted": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "converted_order_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "converted_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "contacted": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "contacted_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "admin_notes": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "addresses": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "label": {
+    "type": "text",
+    "nullable": false,
+    "default": "বাড়ি"
+   },
+   "recipient_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "phone": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "address_line": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "city": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "district": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "postal_code": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "is_default": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "admin_2fa": {
+  "pk": [
+   "user_id"
+  ],
+  "columns": {
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "secret": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "enabled": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "backup_codes": {
+    "type": "_text",
+    "nullable": false,
+    "default": []
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "verified_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "last_used_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "admin_2fa_config": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "session_ttl_hours": {
+    "type": "int4",
+    "nullable": false,
+    "default": 12
+   },
+   "remember_device_ttl_days": {
+    "type": "int4",
+    "nullable": false,
+    "default": 30
+   },
+   "allow_remember_device": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "system_enabled": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   }
+  }
+ },
+ "admin_2fa_sessions": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "token": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "user_agent": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "ip": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "expires_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "admin_email_otps": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "code_hash": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "expires_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": null
+   },
+   "used_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "attempts": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "ip": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "affiliate_accounts": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "referral_code": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "pending"
+   },
+   "custom_commission_percent": {
+    "type": "numeric",
+    "nullable": true,
+    "default": null
+   },
+   "custom_customer_discount_percent": {
+    "type": "numeric",
+    "nullable": true,
+    "default": null
+   },
+   "total_clicks": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "total_conversions": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "total_earned": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "total_paid": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "available_balance": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "payout_method": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "payout_account": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "payout_account_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "application_note": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "admin_note": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "approved_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "approved_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "applicant_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "applicant_email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "applicant_phone": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "website_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "facebook_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "youtube_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "other_social_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "audience_size": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "niche": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "why_join": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "promotion_strategy": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "affiliate_clicks": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "affiliate_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "referral_code": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "visitor_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "landing_page": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "ip_address": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "user_agent": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "referrer": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "country": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "converted": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "affiliate_conversions": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "affiliate_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "order_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "order_number": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "order_total": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "commission_percent": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "commission_amount": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "customer_discount_amount": {
+    "type": "numeric",
+    "nullable": true,
+    "default": 0
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "pending"
+   },
+   "paid_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "rejection_reason": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "affiliate_product_commissions": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "commission_percent": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "customer_discount_percent": {
+    "type": "numeric",
+    "nullable": true,
+    "default": 0
+   },
+   "is_active": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "affiliate_settings": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "is_enabled": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "default_commission_percent": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 10
+   },
+   "customer_discount_percent": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "enable_customer_discount": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "enable_affiliate_commission": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "minimum_withdrawal": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 500
+   },
+   "cookie_duration_days": {
+    "type": "int4",
+    "nullable": false,
+    "default": 30
+   },
+   "auto_approve_applications": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "terms_and_conditions": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "affiliate_withdrawals": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "affiliate_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "amount": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "method": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "account_number": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "account_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "pending"
+   },
+   "admin_notes": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "transaction_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "requested_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "processed_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "processed_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "backup_history": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "action": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "label": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "tables": {
+    "type": "_text",
+    "nullable": false,
+    "default": []
+   },
+   "records": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "files": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "success"
+   },
+   "error": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "note": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "snapshot": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "snapshot_rows": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "reverted_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "created_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "backup_sync_log": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "int8",
+    "nullable": false,
+    "default": null
+   },
+   "kind": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "details": {
+    "type": "jsonb",
+    "nullable": false,
+    "default": "{}"
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "backup_sync_queue": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "int8",
+    "nullable": false,
+    "default": null
+   },
+   "table_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "pk_text": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "op": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "row_data": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "attempts": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "last_error": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "next_retry_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "backup_sync_state": {
+  "pk": [
+   "key"
+  ],
+  "columns": {
+   "key": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "value": {
+    "type": "jsonb",
+    "nullable": false,
+    "default": "{}"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "bkash_transactions": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "payment_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "trx_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "order_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "order_number": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "customer_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "customer_email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "customer_phone": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "payer_msisdn": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "payer_reference": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "amount": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "currency": {
+    "type": "text",
+    "nullable": false,
+    "default": "BDT"
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "initiated"
+   },
+   "mode": {
+    "type": "text",
+    "nullable": false,
+    "default": "sandbox"
+   },
+   "status_code": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "status_message": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "raw_create": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "raw_execute": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "paid_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "purpose": {
+    "type": "text",
+    "nullable": false,
+    "default": "order"
+   },
+   "topup_request_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "trx_id_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   },
+   "payer_reference_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   },
+   "payer_msisdn_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "blog_categories": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "color": {
+    "type": "text",
+    "nullable": true,
+    "default": "#7c3aed"
+   },
+   "sort_order": {
+    "type": "int4",
+    "nullable": true,
+    "default": 0
+   },
+   "is_active": {
+    "type": "bool",
+    "nullable": true,
+    "default": true
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "blog_comments": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "post_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "author_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "author_email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "content": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "pending"
+   },
+   "parent_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "blog_post_tags": {
+  "pk": [
+   "post_id",
+   "tag_id"
+  ],
+  "columns": {
+   "post_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "tag_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   }
+  }
+ },
+ "blog_posts": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "title": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "excerpt": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "content": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "featured_image": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "category_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "author_name": {
+    "type": "text",
+    "nullable": true,
+    "default": "Admin"
+   },
+   "author_avatar": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "author_bio": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "draft"
+   },
+   "is_featured": {
+    "type": "bool",
+    "nullable": true,
+    "default": false
+   },
+   "tags": {
+    "type": "_text",
+    "nullable": true,
+    "default": []
+   },
+   "reading_time": {
+    "type": "int4",
+    "nullable": true,
+    "default": 5
+   },
+   "views": {
+    "type": "int4",
+    "nullable": true,
+    "default": 0
+   },
+   "seo_title": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "seo_description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "published_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "blog_tags": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "categories": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "image_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "parent_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "is_active": {
+    "type": "bool",
+    "nullable": true,
+    "default": true
+   },
+   "sort_order": {
+    "type": "int4",
+    "nullable": true,
+    "default": 0
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "chat_conversations": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "session_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "user_message": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "ai_response": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "user_agent": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "page_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "cid_balance_adjustments": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "delta": {
+    "type": "int4",
+    "nullable": false,
+    "default": null
+   },
+   "balance_after": {
+    "type": "int4",
+    "nullable": false,
+    "default": null
+   },
+   "note": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "adjusted_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "cid_balances": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "balance": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "total_added": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "total_used": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "cid_generations": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "operator": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "operator_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "number": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "result": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "success"
+   },
+   "cost": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "provider": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "cid_product_credits": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "cid_credits": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "is_active": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "coupons": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "code": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "discount_type": {
+    "type": "text",
+    "nullable": false,
+    "default": "percentage"
+   },
+   "discount_value": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "min_order_amount": {
+    "type": "numeric",
+    "nullable": true,
+    "default": 0
+   },
+   "max_uses": {
+    "type": "int4",
+    "nullable": true,
+    "default": null
+   },
+   "uses_count": {
+    "type": "int4",
+    "nullable": true,
+    "default": 0
+   },
+   "is_active": {
+    "type": "bool",
+    "nullable": true,
+    "default": true
+   },
+   "expires_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "customer_email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "source": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "currencies": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "code": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "symbol": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "rate_from_bdt": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 1
+   },
+   "is_default": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "is_active": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "position": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "decimals": {
+    "type": "int2",
+    "nullable": false,
+    "default": 2
+   },
+   "symbol_position": {
+    "type": "text",
+    "nullable": false,
+    "default": "before"
+   },
+   "flag_emoji": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "rate_per_usd": {
+    "type": "numeric",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "email_send_log": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "message_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "template_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "recipient_email": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "error_message": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "metadata": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "email_send_state": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "retry_after_until": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "batch_size": {
+    "type": "int4",
+    "nullable": false,
+    "default": 10
+   },
+   "send_delay_ms": {
+    "type": "int4",
+    "nullable": false,
+    "default": 200
+   },
+   "auth_email_ttl_minutes": {
+    "type": "int4",
+    "nullable": false,
+    "default": 15
+   },
+   "transactional_email_ttl_minutes": {
+    "type": "int4",
+    "nullable": false,
+    "default": 60
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "email_unsubscribe_tokens": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "token": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "email": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "used_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "global_attribute_values": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "attribute_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "value": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "color_code": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "sort_order": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "global_attributes": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "type": {
+    "type": "text",
+    "nullable": false,
+    "default": "select"
+   },
+   "order_by": {
+    "type": "text",
+    "nullable": false,
+    "default": "name"
+   },
+   "has_archives": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "sort_order": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "google_indexing_config": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "service_account_json": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "service_account_email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "project_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "last_tested_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "last_test_ok": {
+    "type": "bool",
+    "nullable": true,
+    "default": null
+   },
+   "last_test_message": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "google_indexing_log": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "url": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "notification_type": {
+    "type": "text",
+    "nullable": false,
+    "default": "URL_UPDATED"
+   },
+   "status_code": {
+    "type": "int4",
+    "nullable": true,
+    "default": null
+   },
+   "ok": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "response_body": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "error": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "submitted_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "help_articles": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "title": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "content": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "excerpt": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "category": {
+    "type": "text",
+    "nullable": false,
+    "default": "general"
+   },
+   "tags": {
+    "type": "_text",
+    "nullable": true,
+    "default": []
+   },
+   "is_featured": {
+    "type": "bool",
+    "nullable": true,
+    "default": false
+   },
+   "helpful_yes": {
+    "type": "int4",
+    "nullable": true,
+    "default": 0
+   },
+   "helpful_no": {
+    "type": "int4",
+    "nullable": true,
+    "default": 0
+   },
+   "views": {
+    "type": "int4",
+    "nullable": true,
+    "default": 0
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "published"
+   },
+   "sort_order": {
+    "type": "int4",
+    "nullable": true,
+    "default": 0
+   },
+   "seo_title": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "seo_description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "key_check_history": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "key_value": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "error_code": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "product": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "sub_type": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "act_type": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "remaining": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "license_keys": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "order_item_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "key_value": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "key_type": {
+    "type": "text",
+    "nullable": false,
+    "default": "license"
+   },
+   "extra_info": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "available"
+   },
+   "assigned_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "delivered_to_phone": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "delivery_batch_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "variant": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "key_value_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   },
+   "extra_info_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "newsletter_subscribers": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "email": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "active"
+   },
+   "source": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "subscribed_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "notices": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "title": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "summary": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "body": {
+    "type": "text",
+    "nullable": false,
+    "default": ""
+   },
+   "reference_no": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "audience": {
+    "type": "text",
+    "nullable": false,
+    "default": "public"
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "draft"
+   },
+   "pinned": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "signed_by": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "signed_role": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "effective_date": {
+    "type": "date",
+    "nullable": true,
+    "default": null
+   },
+   "published_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "created_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "notifications": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "title": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "message": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "type": {
+    "type": "text",
+    "nullable": false,
+    "default": "info"
+   },
+   "is_read": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "link": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "offer_blocked_participants": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "offer_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "kind": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "identifier": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "reason": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "offer_facebook_comments": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "offer_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "post_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "fb_comment_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "author_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "author_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "message": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "like_count": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "fb_created_time": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "is_winner": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "winner_rank": {
+    "type": "int4",
+    "nullable": true,
+    "default": null
+   },
+   "imported_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "offer_fields": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "offer_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "field_type": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "label": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "placeholder": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "help_text": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "required": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "options": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": "[]"
+   },
+   "validation": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": "{}"
+   },
+   "sort_order": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "offer_submissions": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "offer_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "data": {
+    "type": "jsonb",
+    "nullable": false,
+    "default": "{}"
+   },
+   "participant_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "participant_email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "participant_phone": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "ip": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "user_agent": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "is_winner": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "winner_rank": {
+    "type": "int4",
+    "nullable": true,
+    "default": null
+   },
+   "prize_won": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "converted_to_customer": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "customer_user_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "converted_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "offer_winners": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "offer_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "submission_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "rank": {
+    "type": "int4",
+    "nullable": false,
+    "default": null
+   },
+   "prize": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "selected_by": {
+    "type": "text",
+    "nullable": false,
+    "default": "random"
+   },
+   "announced": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "ai_reason": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "participant_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "source": {
+    "type": "text",
+    "nullable": false,
+    "default": "submission"
+   },
+   "fb_comment_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "participant_contact": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "notes": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "offers": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "title": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "banner_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "prize_details": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "terms": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "draft"
+   },
+   "start_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "end_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "max_submissions": {
+    "type": "int4",
+    "nullable": true,
+    "default": null
+   },
+   "require_login": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "success_message": {
+    "type": "text",
+    "nullable": true,
+    "default": "ধন্যবাদ! আপনার এন্ট্রি গৃহীত হয়েছে।"
+   },
+   "google_form_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "show_winners": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "submission_count": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "created_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "notice": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "show_notice": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "auto_publish": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "auto_close": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "max_entries_per_user": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "min_purchase_amount": {
+    "type": "numeric",
+    "nullable": true,
+    "default": null
+   },
+   "referral_bonus_entries": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "winner_count": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "winner_selection_mode": {
+    "type": "text",
+    "nullable": false,
+    "default": "manual"
+   },
+   "auto_notify_winners": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   }
+  }
+ },
+ "office365_check_history": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "username": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "status_acc": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "checked_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "order_items": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "order_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "product_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "quantity": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "price": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "total": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "license_key": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "custom_field_values": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": "{}"
+   },
+   "expires_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "last_reminder_sent_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "license_key_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "order_timeline": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "order_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "note": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_by": {
+    "type": "text",
+    "nullable": true,
+    "default": "system"
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "orders": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "order_number": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "customer_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "customer_email": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "customer_phone": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "order_status",
+    "nullable": false,
+    "default": "pending"
+   },
+   "subtotal": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "discount_amount": {
+    "type": "numeric",
+    "nullable": true,
+    "default": 0
+   },
+   "total": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "coupon_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "coupon_code": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "payment_method": {
+    "type": "text",
+    "nullable": true,
+    "default": "bkash"
+   },
+   "payment_status": {
+    "type": "text",
+    "nullable": true,
+    "default": "pending"
+   },
+   "transaction_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "notes": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "admin_notes": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "affiliate_referral_code": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "affiliate_discount_amount": {
+    "type": "numeric",
+    "nullable": true,
+    "default": 0
+   },
+   "deleted_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "deleted_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "customer_phone_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   },
+   "customer_email_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   },
+   "notes_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   },
+   "paypal_order_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "paypal_capture_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "paid_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "outreach_logs": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "prospect_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "event_type": {
+    "type": "text",
+    "nullable": false,
+    "default": "note"
+   },
+   "channel": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "subject": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "message": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "occurred_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "created_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "outreach_prospects": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "site_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "site_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "contact_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "contact_email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "contact_channel": {
+    "type": "text",
+    "nullable": true,
+    "default": "email"
+   },
+   "category": {
+    "type": "text",
+    "nullable": true,
+    "default": "tech_blog"
+   },
+   "domain_authority": {
+    "type": "int4",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "prospect"
+   },
+   "pitch_template": {
+    "type": "text",
+    "nullable": true,
+    "default": "guest_post"
+   },
+   "notes": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "last_contacted_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "follow_up_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "published_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "payment_link_submissions": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "payment_link_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "link_slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "customer_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "customer_phone": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "customer_email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "customer_address": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "product_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "product_image": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "amount": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "quantity": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "total": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "payment_method": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "transaction_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "sender_number": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "payment_screenshot_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "custom_field_values": {
+    "type": "jsonb",
+    "nullable": false,
+    "default": "{}"
+   },
+   "customer_note": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "pending"
+   },
+   "admin_note": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "order_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "order_number": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "reviewed_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "reviewed_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "ip_address": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "user_agent": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "payment_links": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "title": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "product_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "product_image": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "amount": {
+    "type": "numeric",
+    "nullable": true,
+    "default": null
+   },
+   "original_amount": {
+    "type": "numeric",
+    "nullable": true,
+    "default": null
+   },
+   "quantity": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "allow_qty_change": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "payment_methods": {
+    "type": "jsonb",
+    "nullable": false,
+    "default": "[]"
+   },
+   "required_fields": {
+    "type": "jsonb",
+    "nullable": false,
+    "default": "{\"name\": true, \"note\": false, \"email\": false, \"phone\": true, \"address\": false}"
+   },
+   "custom_fields": {
+    "type": "jsonb",
+    "nullable": false,
+    "default": "[]"
+   },
+   "max_uses": {
+    "type": "int4",
+    "nullable": true,
+    "default": null
+   },
+   "current_uses": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "expires_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "active"
+   },
+   "redirect_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "is_open_form": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   }
+  }
+ },
+ "payment_proofs": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "order_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "transaction_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "screenshot_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "payment_method": {
+    "type": "text",
+    "nullable": false,
+    "default": "bkash"
+   },
+   "amount": {
+    "type": "numeric",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "pending"
+   },
+   "admin_notes": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "submitted_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "reviewed_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "reviewed_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "transaction_id_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "paypal_transactions": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "paypal_order_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "paypal_capture_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "transaction_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "order_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "order_number": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "payer_email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "payer_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "payer_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "amount": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "currency": {
+    "type": "text",
+    "nullable": false,
+    "default": "USD"
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "created"
+   },
+   "mode": {
+    "type": "text",
+    "nullable": false,
+    "default": "sandbox"
+   },
+   "refunded_amount": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "raw_create": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "raw_capture": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "raw_refund": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "raw_webhook": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "error_message": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "paid_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "personal_licenses": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "category": {
+    "type": "text",
+    "nullable": true,
+    "default": "general"
+   },
+   "key_value": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "password": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "expires_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "note": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "active"
+   },
+   "customer_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "customer_phone": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "delivered_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "password_type": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "customer_email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "last_reminder_sent_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "key_value_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   },
+   "password_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   },
+   "note_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "point_transactions": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "type": {
+    "type": "text",
+    "nullable": false,
+    "default": "earn"
+   },
+   "points": {
+    "type": "int4",
+    "nullable": false,
+    "default": null
+   },
+   "balance_after": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "note": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "reference_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "product_attribute_assignments": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "attribute_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "custom_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "attribute_type": {
+    "type": "text",
+    "nullable": false,
+    "default": "global"
+   },
+   "selected_values": {
+    "type": "jsonb",
+    "nullable": false,
+    "default": "[]"
+   },
+   "is_visible": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "use_in_variation": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "sort_order": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "product_categories": {
+  "pk": [
+   "product_id",
+   "category_id"
+  ],
+  "columns": {
+   "product_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "category_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "product_content_backups": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "faq": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "created_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "product_option_groups": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "display_type": {
+    "type": "text",
+    "nullable": false,
+    "default": "button"
+   },
+   "is_required": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "sort_order": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "allow_multiple": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   }
+  }
+ },
+ "product_option_values": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "group_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "label": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "price_adjustment": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "is_default": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "sort_order": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "product_reviews": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "product_slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "author_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "author_email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "rating": {
+    "type": "int4",
+    "nullable": false,
+    "default": null
+   },
+   "title": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "body": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "pending"
+   },
+   "is_verified": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "helpful_count": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "products": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "short_description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "price": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "original_price": {
+    "type": "numeric",
+    "nullable": true,
+    "default": null
+   },
+   "discount_percent": {
+    "type": "int4",
+    "nullable": true,
+    "default": null
+   },
+   "sku": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "stock_quantity": {
+    "type": "int4",
+    "nullable": true,
+    "default": 0
+   },
+   "status": {
+    "type": "product_status",
+    "nullable": false,
+    "default": "active"
+   },
+   "category_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "image_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "images": {
+    "type": "_text",
+    "nullable": true,
+    "default": null
+   },
+   "tags": {
+    "type": "_text",
+    "nullable": true,
+    "default": null
+   },
+   "is_featured": {
+    "type": "bool",
+    "nullable": true,
+    "default": false
+   },
+   "is_digital": {
+    "type": "bool",
+    "nullable": true,
+    "default": true
+   },
+   "download_link": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "sort_order": {
+    "type": "int4",
+    "nullable": true,
+    "default": 0
+   },
+   "total_sales": {
+    "type": "int4",
+    "nullable": true,
+    "default": 0
+   },
+   "total_views": {
+    "type": "int4",
+    "nullable": true,
+    "default": 0
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "delivery_time": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "what_you_get": {
+    "type": "_text",
+    "nullable": true,
+    "default": null
+   },
+   "faq": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": "[]"
+   },
+   "seo_title": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "seo_description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "variants": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": "[]"
+   },
+   "brand": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "cost_price": {
+    "type": "numeric",
+    "nullable": true,
+    "default": null
+   },
+   "video_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "product_type": {
+    "type": "text",
+    "nullable": true,
+    "default": "digital"
+   },
+   "badge": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "demo_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "warranty_note": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "refund_note": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "delivery_type": {
+    "type": "text",
+    "nullable": true,
+    "default": "instant"
+   },
+   "attributes": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": "[]"
+   },
+   "subcategory_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "custom_fields": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": "[]"
+   },
+   "image_alt": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "profiles": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "display_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "avatar_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "phone": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "referral_code": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "referred_by": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "referral_earnings": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "referral_credit": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "referral_discount": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "wallet_balance": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "points_balance": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "total_points_earned": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "total_points_redeemed": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "username": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "signup_ip": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "referral_credit_balance": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "is_suspended": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "suspended_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "suspended_reason": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "personal_discount_percent": {
+    "type": "int2",
+    "nullable": false,
+    "default": 0
+   }
+  }
+ },
+ "recently_viewed": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "product_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "product_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "product_price": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "product_image": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "product_slug": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "viewed_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "referrals": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "referrer_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "referred_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "referral_code": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "pending"
+   },
+   "reward_amount": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "reward_paid": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "signup_attempts": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "ip": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "email": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "user_agent": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "success": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "reason": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "site_settings": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "key": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "value": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "category": {
+    "type": "text",
+    "nullable": true,
+    "default": "general"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "software_downloads": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "image_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "download_url": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "sort_order": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "is_active": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "support_replies": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "ticket_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "author_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "author_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "is_admin": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "message": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "message_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "support_tickets": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "ticket_number": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "customer_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "customer_email": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "customer_phone": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "order_number": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "subject": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "message": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "open"
+   },
+   "priority": {
+    "type": "text",
+    "nullable": false,
+    "default": "normal"
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "subject_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   },
+   "message_enc": {
+    "type": "bytea",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "suppressed_emails": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "email": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "reason": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "metadata": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "telegram_bot_state": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "int4",
+    "nullable": false,
+    "default": null
+   },
+   "update_offset": {
+    "type": "int8",
+    "nullable": false,
+    "default": 0
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "telegram_cart": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "chat_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "product_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "product_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "product_slug": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "price": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "quantity": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "telegram_checkout_state": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "chat_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "step": {
+    "type": "text",
+    "nullable": false,
+    "default": "name"
+   },
+   "collected_data": {
+    "type": "jsonb",
+    "nullable": false,
+    "default": "{}"
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "telegram_checkout_tokens": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "token": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "chat_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "cart_data": {
+    "type": "jsonb",
+    "nullable": false,
+    "default": "[]"
+   },
+   "is_used": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "expires_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "telegram_order_messages": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "telegram_message_id": {
+    "type": "int8",
+    "nullable": false,
+    "default": null
+   },
+   "telegram_chat_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "order_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "order_number": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "telegram_user_prefs": {
+  "pk": [
+   "chat_id"
+  ],
+  "columns": {
+   "chat_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "language": {
+    "type": "text",
+    "nullable": false,
+    "default": "bn"
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "text_overrides": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "key": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "value": {
+    "type": "text",
+    "nullable": false,
+    "default": ""
+   },
+   "default_value": {
+    "type": "text",
+    "nullable": false,
+    "default": ""
+   },
+   "category": {
+    "type": "text",
+    "nullable": false,
+    "default": "general"
+   },
+   "description": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "user_cart_items": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "product_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "category": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "image": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "variant": {
+    "type": "text",
+    "nullable": false,
+    "default": ""
+   },
+   "price": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "original_price": {
+    "type": "numeric",
+    "nullable": true,
+    "default": null
+   },
+   "quantity": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "user_roles": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "role": {
+    "type": "app_role",
+    "nullable": false,
+    "default": "user"
+   }
+  }
+ },
+ "wallet_topup_requests": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "amount": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "payment_method": {
+    "type": "text",
+    "nullable": false,
+    "default": "bkash"
+   },
+   "transaction_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "screenshot_url": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "status": {
+    "type": "text",
+    "nullable": false,
+    "default": "pending"
+   },
+   "admin_notes": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "reviewed_by": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "reviewed_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "wallet_transactions": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "type": {
+    "type": "text",
+    "nullable": false,
+    "default": "credit"
+   },
+   "amount": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "balance_after": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "note": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "reference_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_by": {
+    "type": "text",
+    "nullable": true,
+    "default": "system"
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "welcome_coupons": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "code": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "discount_percent": {
+    "type": "int4",
+    "nullable": false,
+    "default": null
+   },
+   "expires_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": null
+   },
+   "is_used": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "visitor_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "used_by_order_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "discount_type": {
+    "type": "text",
+    "nullable": false,
+    "default": "percent"
+   },
+   "discount_amount": {
+    "type": "numeric",
+    "nullable": false,
+    "default": 0
+   },
+   "prize_label": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "used_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "ip_hash": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   }
+  }
+ },
+ "whatsapp_bot_config": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "int4",
+    "nullable": false,
+    "default": 1
+   },
+   "enabled": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "greeting_enabled": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "greeting_message": {
+    "type": "text",
+    "nullable": false,
+    "default": "আসসালামু আলাইকুম! 👋 Shahed Store এ স্বাগতম।\n\nআপনি যেকোনো প্রোডাক্টের নাম লিখুন (যেমন: Windows 11, Office 2021) — আমি সাথে সাথে দাম ও অর্ডার লিংক পাঠিয়ে দিব।\n\n🛒 ওয়েবসাইট: https://shahedstore.com.bd\n📞 সাপোর্ট: সকাল ১০টা – রাত ১০টা"
+   },
+   "away_enabled": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "away_message": {
+    "type": "text",
+    "nullable": false,
+    "default": "আসসালামু আলাইকুম! এখন আমরা অফলাইনে আছি 🌙\n\nআপনার মেসেজ পেয়েছি। সকাল ১০টার মধ্যে আমাদের টিম রিপ্লাই দিবে ইনশাআল্লাহ।\n\nজরুরি হলে ওয়েবসাইট থেকে সরাসরি অর্ডার করতে পারেন:\n🛒 https://shahedstore.com.bd"
+   },
+   "business_hours_start": {
+    "type": "int4",
+    "nullable": false,
+    "default": 10
+   },
+   "business_hours_end": {
+    "type": "int4",
+    "nullable": false,
+    "default": 22
+   },
+   "product_reply_enabled": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "order_status_enabled": {
+    "type": "bool",
+    "nullable": false,
+    "default": true
+   },
+   "fallback_message": {
+    "type": "text",
+    "nullable": false,
+    "default": "আপনার মেসেজের জন্য ধন্যবাদ! 🙏\n\nআমি যা যা করতে পারি:\n• প্রোডাক্টের নাম লিখুন → দাম ও অর্ডার লিংক পাবেন\n• \"order status\" লিখুন → অর্ডারের আপডেট পাবেন\n• ওয়েবসাইট দেখুন: https://shahedstore.com.bd\n\nকোনো সাহায্য লাগলে অপেক্ষা করুন, আমাদের টিম যোগাযোগ করবে।"
+   },
+   "greeting_cooldown_hours": {
+    "type": "int4",
+    "nullable": false,
+    "default": 24
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "whatsapp_contacts": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "wa_phone": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "wa_name": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "first_seen_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "last_message_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "last_greeted_at": {
+    "type": "timestamptz",
+    "nullable": true,
+    "default": null
+   },
+   "total_messages": {
+    "type": "int4",
+    "nullable": false,
+    "default": 0
+   },
+   "is_blocked": {
+    "type": "bool",
+    "nullable": false,
+    "default": false
+   },
+   "notes": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   },
+   "updated_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "whatsapp_messages": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "wa_phone": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "direction": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "message_type": {
+    "type": "text",
+    "nullable": false,
+    "default": "text"
+   },
+   "body": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "wa_message_id": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "matched_product_id": {
+    "type": "uuid",
+    "nullable": true,
+    "default": null
+   },
+   "reply_type": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "raw": {
+    "type": "jsonb",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ },
+ "wishlists": {
+  "pk": [
+   "id"
+  ],
+  "columns": {
+   "id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": "__uuid"
+   },
+   "user_id": {
+    "type": "uuid",
+    "nullable": false,
+    "default": null
+   },
+   "product_id": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "product_name": {
+    "type": "text",
+    "nullable": false,
+    "default": null
+   },
+   "product_price": {
+    "type": "numeric",
+    "nullable": false,
+    "default": null
+   },
+   "product_image": {
+    "type": "text",
+    "nullable": true,
+    "default": null
+   },
+   "created_at": {
+    "type": "timestamptz",
+    "nullable": false,
+    "default": "__now"
+   }
+  }
+ }
+}
